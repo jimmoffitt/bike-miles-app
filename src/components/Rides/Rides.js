@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Card from "../UI/Card";
 import RidesFilter from "./RidesFilter";
 import RidesList from "./RidesList";
+import RidesChart from "./RidesChart";
 import "./Rides.css";
 
 //function Rides(props) {
@@ -24,6 +25,7 @@ const Rides = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
+        <RidesChart rides={filteredRides}/>
         <RidesList items={filteredRides}/>
 
       </Card>

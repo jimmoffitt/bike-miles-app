@@ -36,7 +36,7 @@ const RideForm = (props) => {
 
     const rideData = {
       title: enteredTitle,
-      distance: enteredDistance,
+      distance: +enteredDistance,  //Cast to number (from string)
       date: new Date(enteredDate),
     };
 
