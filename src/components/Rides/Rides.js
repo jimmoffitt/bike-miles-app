@@ -1,31 +1,43 @@
 import React, { useState } from "react";
 
 import Card from "../UI/Card";
-import RidesFilter from "./RidesFilter";
+import RidesYearFilter from "./RidesYearFilter";
+import RidesMonthFilter from "./RidesMonthFilter";
 import RidesList from "./RidesList";
-import RidesChart from "./RidesChart";
+import DistanceByMonthChart from "./DistanceByMonthChart";
 import "./Rides.css";
 
 //function Rides(props) {
 const Rides = (props) => {
   const [filteredYear, setFilteredYear] = useState("2023");
+  const [filteredMonth, setFilteredMonth] = useState("January")
 
-  const filterChangeHandler = (selectedYear) => {
+  const yearFilterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
 
+  const monthFilterChangeHandler = (selectedMonth) => {
+    setFilteredMonth(selectedMonth);
+  };
+
+  // TODO: Add month filter.
   const filteredRides = props.items.filter((ride) => {
     return ride.date.getFullYear().toString() === filteredYear;
+    //retrun ride.date. getFullMonth().toString === filteredYear, filteredMonth;
   });
 
   return (
     <div>
-      <Card className="rides">
-        <RidesFilter
+      <Card className="rides">  
+        <RidesYearFilter
           selected={filteredYear}
-          onChangeFilter={filterChangeHandler}
+          onChangeYearFilter={yearFilterChangeHandler}
         />
-        <RidesChart rides={filteredRides}/>
+        <DistanceByMonthChart rides={filteredRides}/>
+        <RidesMonthFilter
+          selected={filteredMonth}
+          onChangeMonthFilter={monthFilterChangeHandler}
+        />
         <RidesList items={filteredRides}/>
 
       </Card>

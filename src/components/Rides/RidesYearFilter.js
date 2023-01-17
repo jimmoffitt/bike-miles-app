@@ -1,12 +1,13 @@
 // TODO
 import React from 'react';
 
-import './RidesFilter.css';
+import './TimeFilter.css';
 
-const RidesFilter = (props) => {
+const RidesYearFilter
+ = (props) => {
 
   const yearDropdownChangeHandler = (event) => {
-    props.onChangeFilter(event.target.value);
+    props.onChangeYearFilter(event.target.value);
   };
 
   return (
@@ -24,4 +25,5 @@ const RidesFilter = (props) => {
   );
 };
 
-export default RidesFilter;
+export default RidesYearFilter
+;

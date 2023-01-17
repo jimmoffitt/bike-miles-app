@@ -36,7 +36,7 @@ const RideForm = (props) => {
 
     const rideData = {
       title: enteredTitle,
-      distance: +enteredDistance,  //Cast to number (from string)
+      distance: +enteredDistance, //Cast to number (from string)
       date: new Date(enteredDate),
     };
 
@@ -46,15 +46,14 @@ const RideForm = (props) => {
     setEnteredDate("");
   };
 
-  // Below with value= we have two-way binding, which is fundamental with forms. 
-  // TODO: Add styling to top <h3> element. Left justify at least. 
+  // Below with value= we have two-way binding, which is fundamental with forms.
+  // TODO: Add styling to top <h3> element. Left justify at least.
   return (
     <form onSubmit={submitHandler}>
       <div className="new-ride__preamble">
         <h3>Enter new ride data</h3>
       </div>
       <div className="new-ride__controls">
-        
         <div className="new-ride__control">
           <label>Short description</label>
           <input
@@ -83,6 +82,9 @@ const RideForm = (props) => {
             onChange={dateChangeHandler}
           />
         </div>
+      </div>
+      <div className="new-ride__control">
+        <label>Import rides from Strava (soon?)</label>
       </div>
       <div className="new-ride__actions">
         <button type="submit">Add Ride</button>

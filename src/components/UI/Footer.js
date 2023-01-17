@@ -15,7 +15,7 @@ return (
 				textAlign: "center",
 				marginTop: "-20px",
              }}>
-		 "(about this project)"
+		 "(about this project)" //Kinda a header for the footer ;) 
 	</h3> */}
 	<Container>
 		<Row>

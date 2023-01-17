@@ -6,24 +6,37 @@ import Rides from "./components/Rides/Rides";
 import Header from "./components/UI/Header";
 import Footer from "./components/UI/Footer";
 
+//TODO: convert to load from persisted Redux state.
 const DUMMY_DATA = [
   {
     id: "e0",
-    title: "A snowy and cold mess...",
-    distance: 7.8,
+    title: "A snowy and cold mess... Exploring this week's options after lots of snow.",
+    distance: 15.1,
     date: new Date(2023, 0, 6),
+  },
+  {
+    id: "z0",
+    title: "More yellow-lined pavement...",
+    distance: 7.8,
+    date: new Date(2023, 0, 7),
   },
   {
     id: "e1",
     title: "It's finally above 50F...",
-    distance: 15.1,
-    date: new Date(2023, 0, 8),
+    distance: 10.3,
+    date: new Date(2023, 0, 12),
   },
   {
     id: "e5",
-    title: "Denver tour",
-    distance: 22,
-    date: new Date(2023, 0, 12),
+    title: "SKOL wander",
+    distance: 6.26,
+    date: new Date(2023, 0, 15),
+  },
+  {
+    id: "e76",
+    title: "Just a fun deadline wander",
+    distance: 7.8,
+    date: new Date(2023, 0, 16),
   },
   {
     id: "e2",
@@ -43,6 +56,12 @@ const DUMMY_DATA = [
     distance: 12.42,
     date: new Date(2022, 11, 14),
   },
+  {
+    id: "644",
+    title: "Northern wander",
+    distance: 15.42,
+    date: new Date(2022, 10, 14),
+  },
  
 ];
 
@@ -54,16 +73,19 @@ const App = () => {
   const addRideHandler = (ride) => {
     setRides((prevRides) => {
       // 'Function form'
-      return [ride, ...prevRides];
+      return [...prevRides,ride];  // Returns an  array of rides. TODO: control adding at head or tail.
     });
+  };
+
+  const deleteRideHandler = (ride) => {
   };
 
   // This code is JSX syntax that generates more verbose React.createElement code.
   return (
     <div>
       <Header />
-      <NewRide onAddRide={addRideHandler} />
       <Rides items={rides} />
+      <NewRide onAddRide={addRideHandler} />
       <Footer />
     </div>
   );

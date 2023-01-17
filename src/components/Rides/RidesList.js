@@ -1,3 +1,5 @@
+// TODO: This currently lists rides from an entire year... Needs to be updated to show by month.  
+
 import React from 'react';
 
 import RideItem from './RideItem';

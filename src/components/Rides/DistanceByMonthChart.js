@@ -2,7 +2,7 @@ import React from 'react';
 
 import Chart from '../Chart/Chart'
 
-function RidesChart(props) {
+function DistanceByMonthChart(props) {
 
     const chartDataPoints = [
         { label: 'Jan', value: 0},
@@ -32,4 +32,4 @@ function RidesChart(props) {
 
 };
 
-export default RidesChart;
+export default DistanceByMonthChart;
