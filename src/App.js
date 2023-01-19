@@ -1,16 +1,21 @@
 // This mix of JS and HTML code is a React pattern (for jsx code).
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
+// Gonna want useEffect too... Triggering getting and setting data.
+
+// These are UI components, all placed in a single "card."
 import NewRide from "./components/NewRide/NewRide";
 import Rides from "./components/Rides/Rides";
 import Header from "./components/UI/Header";
 import Footer from "./components/UI/Footer";
 
 //TODO: convert to load from persisted Redux state.
-const DUMMY_DATA = [
-  {
+// This serves as 'default' data and should set to an empty array/removed.
+const STARTER_RIDES_DATA = [];
+ /*  {
     id: "e0",
-    title: "A snowy and cold mess... Exploring this week's options after lots of snow.",
+    title:
+      "A snowy and cold mess... Exploring this week's options after lots of snow.",
     distance: 15.1,
     date: new Date(2023, 0, 6),
   },
@@ -62,23 +67,38 @@ const DUMMY_DATA = [
     distance: 15.42,
     date: new Date(2022, 10, 14),
   },
- 
-];
+]; */
 
 // Alternate syntax:
 // function App() {
 const App = () => {
-  const [rides, setRides] = useState(DUMMY_DATA);
+  const [rides, setRides] = useState(STARTER_RIDES_DATA);
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('RIDES_APP_DATA');
+    console.log("Retrieved data from localStorage?");
+    if ( data !== null ) setRides(JSON.parse(data));
+  }, []);
+
+  useEffect(() => {
+    console.log("rides", rides);
+    window.localStorage.setItem('RIDES_APP_DATA', JSON.stringify(rides));
+    console.log("Saved data to localStorage?");
+  }, [rides]);
+  
+  console.log("Loading app, a fine time to load in rides data.");
 
   const addRideHandler = (ride) => {
     setRides((prevRides) => {
       // 'Function form'
-      return [...prevRides,ride];  // Returns an  array of rides. TODO: control adding at head or tail.
+      return [...prevRides, ride]; // Returns an  array of rides. TODO: control adding at head or tail.
     });
   };
 
-  const deleteRideHandler = (ride) => {
+  // Add a 'delete ride' feature?
+  /* const deleteRideHandler = (ride) => {
   };
+  */
 
   // This code is JSX syntax that generates more verbose React.createElement code.
   return (

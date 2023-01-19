@@ -1,28 +1,61 @@
 .new-ride__controls {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
     text-align: left;
   }
   
-  .new-ride__control label {
+  .new-ride__description label {
     font-weight: bold;
     margin-bottom: 0.5rem;
     display: block;
   }
   
-  .new-ride__control input {
+  /* We need more detail here. Description input is longer than distance input. */
+  .new-ride__description input {
     font: inherit;
     padding: 0.5rem;
     border-radius: 6px;
     border: 1px solid #ccc;
-    width: 20rem;
+    width: 40rem;
     max-width: 100%;
   }
+
+  .new-ride__date label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
   
+  /* We need more detail here. Description input is longer than distance input. */
+  .new-ride__date input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 25rem;
+    max-width: 50%;
+  }
+
+  .new-ride__distance label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+    
+  .new-ride__distance input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 15rem;
+    max-width: 50%;
+  }
+
   .new-ride__actions {
     text-align: right;
+    /* padding: 0.5rem; */
   }
 
   .new-ride__preamble {

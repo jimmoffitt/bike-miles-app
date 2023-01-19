@@ -10,7 +10,8 @@ import "./Rides.css";
 //function Rides(props) {
 const Rides = (props) => {
   const [filteredYear, setFilteredYear] = useState("2023");
-  const [filteredMonth, setFilteredMonth] = useState("January")
+  const [filteredMonth, setFilteredMonth] = useState("January");
+  //const [rides, setRides] = useState([]);
 
   const yearFilterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
@@ -20,10 +21,17 @@ const Rides = (props) => {
     setFilteredMonth(selectedMonth);
   };
 
+  // Here, 'rides' is the archive of rides, not just what is listed.
+  /* const ridesChangeHandler = (rides) => {
+    setRides(rides);
+  }; */
+
   // TODO: Add month filter.
+     // return ride.date.getFullYear().toString() === filteredYear && ride.date.getMonth().toString === filteredMonth;
+ 
   const filteredRides = props.items.filter((ride) => {
-    return ride.date.getFullYear().toString() === filteredYear;
-    //retrun ride.date. getFullMonth().toString === filteredYear, filteredMonth;
+    const dt = new Date(ride.date)
+    return dt.getFullYear().toString() === filteredYear;
   });
 
   return (
@@ -38,7 +46,7 @@ const Rides = (props) => {
           selected={filteredMonth}
           onChangeMonthFilter={monthFilterChangeHandler}
         />
-        <RidesList items={filteredRides}/>
+        <RidesList rides={filteredRides}/>
 
       </Card>
     </div>

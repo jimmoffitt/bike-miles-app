@@ -54,7 +54,7 @@ const RideForm = (props) => {
         <h3>Enter new ride data</h3>
       </div>
       <div className="new-ride__controls">
-        <div className="new-ride__control">
+        <div className="new-ride__description">
           <label>Short description</label>
           <input
             type="text"
@@ -62,17 +62,7 @@ const RideForm = (props) => {
             onChange={titleChangeHandler}
           />
         </div>
-        <div className="new-ride__control">
-          <label>Distance</label>
-          <input
-            type="number"
-            min="0.01"
-            step="0.01"
-            value={enteredDistance}
-            onChange={distanceChangeHandler}
-          />
-        </div>
-        <div className="new-ride__control">
+        <div className="new-ride__date">
           <label>Date</label>
           <input
             type="date"
@@ -82,12 +72,22 @@ const RideForm = (props) => {
             onChange={dateChangeHandler}
           />
         </div>
+        <div className="new-ride__distance">
+          <label>Distance</label>
+          <input
+            type="number"
+            min="0.01"
+            step="0.01"
+            value={enteredDistance}
+            onChange={distanceChangeHandler}
+          />
+        </div>
+        <div className="new-ride__actions">
+          <button type="submit">Add Ride</button>
+        </div>
       </div>
-      <div className="new-ride__control">
+      <div className="new-ride__description">
         <label>Import rides from Strava (soon?)</label>
-      </div>
-      <div className="new-ride__actions">
-        <button type="submit">Add Ride</button>
       </div>
     </form>
   );
