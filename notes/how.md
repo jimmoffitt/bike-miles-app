@@ -1,6 +1,14 @@
-# Migrating from MacOS to Windows 11
+## The How
 
-## Setting up development environment
+The first step was learning more about React specificly and revisitng JavaScript in general. A main foundation step was building a Windows development environment after a decade on MacOS.  In general:
+
+* Set up Windows development environment.
+* Clone an example app and refactor it to the "bike ride" domain.
+* Deploy and host the app on a cloud server. In this case, the app is hosted on Netlify.  
+
+## Migrating from MacOS to Windows 11
+
+### Setting up development environment
 
 - Setting up IDE
 
@@ -11,6 +19,8 @@
 - Setting up a GitHub Windows client.
 
   - While at Twitter, I maintained a "Git survival guide' that compiled over ten years of git notes compiled since starting at Gnip and was brand new to git (and GitHub). For me, git on the command-line was often a white-knuckled affair. So, now back on Windows, I decided to try out a current Windows client. So far it has been a great way to create and manage repositories.
+
+## Hosting app on a cloud server
 
 - Exploring options for hosting web apps.
   - Trying Netlify.
