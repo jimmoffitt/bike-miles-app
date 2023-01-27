@@ -1,37 +1,20 @@
 import React, { useState } from "react";
 
-import "./RideForm.css";
+// import "./RideFormNew.css";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import 'bootstrap/dist/css/bootstrap.min.css'; //TODO: more global place for this?
 
-const RideForm = (props) => {
+const NewRideGrid = (props) => {
   // Setting up as individual state trackers.
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredDistance, setEnteredDistance] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-  // Here we set up a unified State object.
-  // const [userInput, setUserInput ] = useState( {
-  //     enteredTitle: '',
-  //     enteredAmount: '',
-  //     enteredDate: '',
-  // } );
+  const [enteredStravaDate, setEnteredStravaDate] = useState("");
 
-  const titleChangeHandler = (event) => {
-    setEnteredTitle(event.target.value); // The 'event' object is provided and the current value can be referenced.
-  };
-
-  // Here is the safer pattern for not mucking up event timing with unified States.
-  //    setUserInput( (prevState) => {
-  //        return { ...prevState, enteredTitle: event.target.value};
-  //    });
-  //};
-
-  const distanceChangeHandler = (event) => {
-    setEnteredDistance(event.target.value);
-  };
-  const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
-  };
-
-  const submitHandler = (event) => {
+  const submitRideHandler = (event) => {
     event.preventDefault();
 
     const rideData = {
@@ -41,56 +24,88 @@ const RideForm = (props) => {
     };
 
     props.onSaveRideData(rideData);
+    // We want to clear these input fields:
     setEnteredTitle("");
     setEnteredDistance("");
     setEnteredDate("");
   };
 
-  // Below with value= we have two-way binding, which is fundamental with forms.
-  // TODO: Add styling to top <h3> element. Left justify at least.
+  const submitStravaHandler = (event) => {
+    event.preventDefault();
+
+    const StravaRequestData = {
+      since: new Date(enteredStravaDate),
+    };
+
+    props.onSaveRideData(StravaRequestData);
+    // We want to clear these input fields:
+    setEnteredStravaDate("");
+  };
+
+  const titleChangeHandler = (event) => {
+    setEnteredTitle(event.target.value); // The 'event' object is provided and the current value can be referenced.
+  };
+
+  const dateChangeHandler = (event) => {
+    setEnteredDate(event.target.value);
+  };
+
+  const distanceChangeHandler = (event) => {
+    setEnteredDistance(event.target.value);
+  };
+
+  const stravaDateChangeHandler = (event) => {
+    setEnteredStravaDate(event.target.value);
+  };
+
   return (
-    <form onSubmit={submitHandler}>
-      <div className="new-ride__preamble">
-        <h3>Enter new ride data</h3>
-      </div>
-      <div className="new-ride__controls">
-        <div className="new-ride__description">
-          <label>Short description</label>
-          <input
+    <Form>
+      <Row>
+        <Col>
+          <Form.Control
+            placeholder="Description"
             type="text"
             value={enteredTitle}
             onChange={titleChangeHandler}
           />
-        </div>
-        <div className="new-ride__date">
-          <label>Date</label>
-          <input
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Form.Control
+            placeholder="Date"
             type="date"
             min="2020-01-01"
             max="2023-12-31"
             value={enteredDate}
             onChange={dateChangeHandler}
           />
-        </div>
-        <div className="new-ride__distance">
-          <label>Distance</label>
-          <input
+        </Col>
+        <Col>
+          <Form.Control
+            placeholder="Distance (miles)"
             type="number"
-            min="0.01"
-            step="0.01"
+            min="0.1"
+            step="0.1"
             value={enteredDistance}
             onChange={distanceChangeHandler}
           />
-        </div>
-        <div className="new-ride__actions">
-          <button type="submit">Add Ride</button>
-        </div>
-      </div>
-      <div className="new-ride__description">
-        <label>Import rides from Strava (soon?)</label>
-      </div>
-    </form>
+        </Col>
+        <Col>
+          <Button type="submit" onClick={submitRideHandler} size="sm" >Add ride</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button type="submit" onClick={submitStravaHandler} size="sm" >Import Strava rides since: </Button>
+        </Col>
+        <Col>
+          <Form.Control placeholder="Date" type="date" value={enteredStravaDate}
+            onChange={stravaDateChangeHandler}/>
+        </Col>
+      </Row>
+    </Form>
   );
 };
 
-export default RideForm;
+export default NewRideGrid;

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import "bootstrap/dist/css/bootstrap.min.css"; //TODO: more global place for this?
 import Card from "../UI/Card";
 import RidesYearFilter from "./RidesYearFilter";
 import RidesMonthFilter from "./RidesMonthFilter";
@@ -14,10 +17,12 @@ const Rides = (props) => {
   //const [rides, setRides] = useState([]);
 
   const yearFilterChangeHandler = (selectedYear) => {
+    // console.log('Updated year');
     setFilteredYear(selectedYear);
   };
 
   const monthFilterChangeHandler = (selectedMonth) => {
+    // console.log('Updated month');
     setFilteredMonth(selectedMonth);
   };
 
@@ -27,27 +32,34 @@ const Rides = (props) => {
   }; */
 
   // TODO: Add month filter.
-     // return ride.date.getFullYear().toString() === filteredYear && ride.date.getMonth().toString === filteredMonth;
- 
+  // return ride.date.getFullYear().toString() === filteredYear && ride.date.getMonth().toString === filteredMonth;
+
   const filteredRides = props.items.filter((ride) => {
-    const dt = new Date(ride.date)
-    return dt.getFullYear().toString() === filteredYear;
+    const dt = new Date(ride.date);
+    // console.log(filteredYear, dt.getFullYear().toString());
+    // console.log(filteredMonth, dt.toLocaleString('default', { month: 'long' }));
+    return (dt.getFullYear().toString() === filteredYear) && ( dt.toLocaleString('default', { month: 'long' }) === filteredMonth);
   });
 
   return (
     <div>
-      <Card className="rides">  
-        <RidesYearFilter
-          selected={filteredYear}
-          onChangeYearFilter={yearFilterChangeHandler}
-        />
-        <DistanceByMonthChart rides={filteredRides}/>
-        <RidesMonthFilter
-          selected={filteredMonth}
-          onChangeMonthFilter={monthFilterChangeHandler}
-        />
-        <RidesList rides={filteredRides}/>
-
+      <Card className="rides">
+        <DistanceByMonthChart rides={props.items} />
+        <Row>
+          <Col>
+          <RidesMonthFilter
+            selected={filteredMonth}
+            onChangeMonthFilter={monthFilterChangeHandler}
+          />
+          </Col>
+          <Col>
+          <RidesYearFilter
+            selected={filteredYear}
+            onChangeYearFilter={yearFilterChangeHandler}
+          />
+          </Col>
+        </Row>
+        <RidesList rides={filteredRides} />
       </Card>
     </div>
   );

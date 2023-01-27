@@ -1,22 +1,35 @@
-import React from 'react';  //Broadcasting and reacting to changes of state. 
+import React from "react"; //Broadcasting and reacting to changes of state.
 
-import RideDate from './RideDate';
-import Card from '../UI/Card';
-import './RideItem.css'
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import "bootstrap/dist/css/bootstrap.min.css"; //TODO: more global place for this?
+import RideDate from "./RideDate";
+import Card from "../UI/Card";
+import "./RideItem.css";
 
-//function RideItem(props) {  // React convention, with passing in object properties. 
-const RideItem = (props) => {  
+//function RideItem(props) {  // React convention, with passing in object properties.
+const RideItem = (props) => {
   //return <div><div>Date</div><div>Title</div></div>; //Can only have a single, top <div> (root element).
-  
+
   return (
-    <Card className='ride-item'>
-      <RideDate date={props.date} />
-      <div className='ride-item__description'>
-        <h2>{props.title}</h2>
-        <div className='ride-item__distance'>{props.distance} miles</div>
-      </div>
+    // Arranging the following widgets in a single Card.
+    //TODO: display of Date is all jacked up.
+    <Card className="ride-item">
+      <Row>
+        <Col>
+          <RideDate date={props.date} />
+        </Col>
+        <Col>
+          <div className="ride-item__description">
+            <h2>{props.title}</h2>
+          </div>
+        </Col>
+        <Col>
+          <div className="ride-item__distance">{props.distance} miles</div>
+        </Col>
+      </Row>
     </Card>
   );
-}
+};
 
 export default RideItem;

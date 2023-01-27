@@ -13,7 +13,7 @@ const RidesMonthFilter
   return (
     <div className='rides-filter'>
       <div className='rides-filter__control'>
-        <label>Filter by month</label>
+        {/* <label>Filter by month</label> */}
         <select value={props.selected} onChange={monthDropdownChangeHandler} >
           <option value='January'>January</option>
           <option value='February'>February</option>

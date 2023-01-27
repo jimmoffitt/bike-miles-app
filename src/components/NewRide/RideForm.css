@@ -1,15 +1,22 @@
 .new-ride__controls {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    /* flex-direction: row;
+    flex-wrap: wrap;  */
     gap: 0.25rem;
     margin-bottom: 0.25rem;
     text-align: left;
+  }
+
+  .new-ride__date_distance_row {
+    display:grid;
+    /* flex-direction: row; */
   }
   
   .new-ride__description label {
     font-weight: bold;
     margin-bottom: 0.5rem;
     display: block;
+    grid-column-start: 1;
   }
   
   /* We need more detail here. Description input is longer than distance input. */
@@ -19,13 +26,15 @@
     border-radius: 6px;
     border: 1px solid #ccc;
     width: 40rem;
-    max-width: 100%;
+    grid-column-start: 2;
+    /* max-width: 100%; */
   }
 
   .new-ride__date label {
     font-weight: bold;
     margin-bottom: 0.5rem;
-    display: block;
+    /* display: block; */
+    grid-column-start: 1;
   }
   
   /* We need more detail here. Description input is longer than distance input. */
@@ -35,13 +44,15 @@
     border-radius: 6px;
     border: 1px solid #ccc;
     width: 25rem;
-    max-width: 50%;
+    /* max-width: 50%; */
+    grid-column-start: 2;
   }
 
   .new-ride__distance label {
     font-weight: bold;
     margin-bottom: 0.5rem;
-    display: block;
+    /* display: block; */
+    grid-column-start: 3;
   }
     
   .new-ride__distance input {
@@ -50,7 +61,8 @@
     border-radius: 6px;
     border: 1px solid #ccc;
     width: 15rem;
-    max-width: 50%;
+    /* max-width: 35%; */
+    grid-column-start: 4;
   }
 
   .new-ride__actions {
@@ -60,4 +72,10 @@
 
   .new-ride__preamble {
     text-align: left;
+  }
+
+  .new-ride__import_from_strava label {
+    text-align: left;
+    /* display: flex;
+    flex-direction: row; */
   }
