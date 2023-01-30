@@ -41,7 +41,7 @@ const App = () => {
     }); */
 
     if (rides !== null) setRides(rides);
-  }, []);
+  }, [rides]);
 
   useEffect(() => {
     // console.log("rides", rides);
