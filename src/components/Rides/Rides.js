@@ -34,17 +34,20 @@ const Rides = (props) => {
   // TODO: Add month filter.
   // return ride.date.getFullYear().toString() === filteredYear && ride.date.getMonth().toString === filteredMonth;
 
-  const filteredRides = props.items.filter((ride) => {
+  const filteredListRides = props.items.filter((ride) => {
     const dt = new Date(ride.date);
-    // console.log(filteredYear, dt.getFullYear().toString());
-    // console.log(filteredMonth, dt.toLocaleString('default', { month: 'long' }));
     return (dt.getFullYear().toString() === filteredYear) && ( dt.toLocaleString('default', { month: 'long' }) === filteredMonth);
   });
 
+  const filteredYearRides = props.items.filter((ride) => {
+    const dt = new Date(ride.date);
+    return (dt.getFullYear().toString() === filteredYear);
+  });
+  
   return (
     <div>
       <Card className="rides">
-        <DistanceByMonthChart rides={props.items} />
+        <DistanceByMonthChart rides={filteredYearRides} />
         <Row>
           <Col>
           <RidesMonthFilter
@@ -59,7 +62,7 @@ const Rides = (props) => {
           />
           </Col>
         </Row>
-        <RidesList rides={filteredRides} />
+        <RidesList rides={filteredListRides} />
       </Card>
     </div>
   );
