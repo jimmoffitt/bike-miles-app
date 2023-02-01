@@ -1,6 +1,6 @@
 ## The How
 
-The first step was learning more about React specificly and revisitng JavaScript in general. A main foundation step was building a Windows development environment after a decade on MacOS.  In general:
+The first step was learning more about React specifically and revisitng JavaScript in general. A early step was building a Windows development environment after a decade on MacOS.  In general:
 
 * Set up Windows development environment.
 * Clone an example app and refactor it to the "bike ride" domain.
