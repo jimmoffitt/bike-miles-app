@@ -30,7 +30,7 @@ const App = () => {
 
   */
   useEffect(() => {
-    // const data = JSON.parse(window.localStorage.getItem("RIDES_APP_DATA"));
+    const rides = JSON.parse(window.localStorage.getItem("RIDES_APP_DATA"));
     //const data = JSON.parse(rides);
 
     console.log("Loaded data");
@@ -41,7 +41,7 @@ const App = () => {
     }); */
 
     if (rides !== null) setRides(rides);
-  }, [rides]);
+  }, [] );
 
   useEffect(() => {
     // console.log("rides", rides);
