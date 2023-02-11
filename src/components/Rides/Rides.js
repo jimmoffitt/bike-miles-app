@@ -8,11 +8,12 @@ import RidesYearFilter from "./RidesYearFilter";
 import RidesMonthFilter from "./RidesMonthFilter";
 import RidesList from "./RidesList";
 import DistanceByMonthChart from "./DistanceByMonthChart";
+import RideStats from "./RideStats";
 import "./Rides.css";
 
 //function Rides(props) {
 const Rides = (props) => {
-  const [filteredYear, setFilteredYear] = useState("2023");
+  const [filteredYear, setFilteredYear] = useState("2022");
   const [filteredMonth, setFilteredMonth] = useState("January");
   //const [rides, setRides] = useState([]);
 
@@ -36,30 +37,43 @@ const Rides = (props) => {
 
   const filteredListRides = props.items.filter((ride) => {
     const dt = new Date(ride.date);
-    return (dt.getFullYear().toString() === filteredYear) && ( dt.toLocaleString('default', { month: 'long' }) === filteredMonth);
+    return (
+      dt.getFullYear().toString() === filteredYear &&
+      dt.toLocaleString("default", { month: "long" }) === filteredMonth
+    );
   });
 
   const filteredYearRides = props.items.filter((ride) => {
     const dt = new Date(ride.date);
-    return (dt.getFullYear().toString() === filteredYear);
+    return dt.getFullYear().toString() === filteredYear;
   });
-  
+
+  /* const statsData  {
+    rides;
+    filteredMonth;
+  };
+ */
   return (
     <div>
       <Card className="rides">
-        <DistanceByMonthChart rides={filteredYearRides} />
+        <DistanceByMonthChart yearRides={filteredYearRides} />
         <Row>
           <Col>
-          <RidesMonthFilter
-            selected={filteredMonth}
-            onChangeMonthFilter={monthFilterChangeHandler}
-          />
+            <RidesMonthFilter
+              selected={[filteredMonth]}
+              onChangeMonthFilter={monthFilterChangeHandler}
+            />
           </Col>
           <Col>
-          <RidesYearFilter
-            selected={filteredYear}
-            onChangeYearFilter={yearFilterChangeHandler}
-          />
+            <RidesYearFilter
+              selected={filteredYear}
+              onChangeYearFilter={yearFilterChangeHandler}
+            />
+          </Col>
+          <Col>
+            {/* <RideStats yearRides={filteredYearRides} />   */}
+            <RideStats { ...{filteredYearRides, filteredMonth} } />
+            {/* Need to pass in filteredMonth */}
           </Col>
         </Row>
         <RidesList rides={filteredListRides} />

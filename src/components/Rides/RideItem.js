@@ -16,15 +16,15 @@ const RideItem = (props) => {
     //TODO: display of Date is all jacked up.
     <Card className="ride-item">
       <Row>
-        <Col>
+        <Col xs={3}>
           <RideDate date={props.date} />
         </Col>
-        <Col>
+        <Col xs={6}>
           <div className="ride-item__description">
             <h2>{props.title}</h2>
           </div>
         </Col>
-        <Col>
+        <Col xs={3}>
           <div className="ride-item__distance">{props.distance} miles</div>
         </Col>
       </Row>
