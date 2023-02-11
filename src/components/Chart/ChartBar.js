@@ -19,6 +19,7 @@ function ChartBar(props) {
         ></div>
       </div>
       <div className="chart-bar__label">{props.label}</div>
+      <div>{props.value.toFixed(0)}</div>
     </div>
   );
 }

@@ -71,7 +71,7 @@ const NewRideGrid = (props) => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={3}>
           <Form.Control
             placeholder="Date"
             type="date"

@@ -22,7 +22,7 @@ function DistanceByMonthChart(props) {
     // 'of' loops for arrays.
     // 'in' loops for ?
 
-    for (const ride of props.rides) {
+    for (const ride of props.yearRides) {
         const dt = new Date(ride.date)
         const rideMonth = dt.getMonth(); //0-11, January = 0
         chartDataPoints[rideMonth].value += ride.distance; 
