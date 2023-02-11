@@ -4431,14 +4431,27 @@ export const data = [
   },
   {
     id: "8452268259",
-    title: "Frosty northern wander",
+    title: "Frosty mini-northern wander",
     distance: "7.05",
     date: "2023-01-25T22:10:01.000Z",
   },
   {
     id: "8457340811",
     title: "Another northern wander",
-    distance: "7.10",
+    distance: "15.4",
     date: "2023-01-26T21:32:29.000Z",
   },
+  {
+    id: "ID-random",
+    title: "Yet another northern wander",
+    distance: "15.66",
+    date: "2023-02-02T21:32:29.000Z",
+  },
+  {
+    id: "ID-random-2",
+    title: "test ride",
+    distance: "10.0",
+    date: "2023-02-02T21:32:29.000Z",
+  },
+  
 ];
